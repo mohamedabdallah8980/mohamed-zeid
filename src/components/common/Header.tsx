@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFootball } from '../../context/FootballContext';
 import { Play, Pause, Smartphone, Monitor, Sun, Moon, Globe, Bell } from 'lucide-react';
+import { FlutterExportModal } from '../flutter-export/FlutterExportModal';
 
 export const Header: React.FC = () => {
+  const [isFlutterModalOpen, setIsFlutterModalOpen] = useState(false);
   const {
     language,
     setLanguage,
@@ -43,6 +45,16 @@ export const Header: React.FC = () => {
 
         {/* Action Controls */}
         <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Flutter Code & ZIP Export Button */}
+          <button
+            onClick={() => setIsFlutterModalOpen(true)}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#00FF87]/15 hover:bg-[#00FF87]/25 border border-[#00FF87]/50 text-xs font-bold text-[#00FF87] transition-all shadow-[0_0_10px_rgba(0,255,135,0.2)]"
+            title="تحميل وعرض كود Flutter & Dart"
+          >
+            <span>📱</span>
+            <span className="text-[11px] font-extrabold">Flutter & Dart</span>
+          </button>
+
           {/* Live Simulator Play/Pause */}
           <button
             onClick={toggleSimulator}
@@ -108,6 +120,12 @@ export const Header: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Flutter Source Code & ZIP Export Modal */}
+      <FlutterExportModal
+        isOpen={isFlutterModalOpen}
+        onClose={() => setIsFlutterModalOpen(false)}
+      />
     </header>
   );
 };
