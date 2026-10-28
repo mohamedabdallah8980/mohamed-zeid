@@ -1,0 +1,6 @@
+{
+  "name": "ScorePulse - Live Football Scores & Stats",
+  "description": "Production-grade live football scores, interactive tactical pitch lineups, match statistics, standings, and real-time updates inspired by SofaScore & 365Scores.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
